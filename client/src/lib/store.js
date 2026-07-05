@@ -47,7 +47,11 @@ export const localAuth = {
   signIn(email, password) {
     const users = read(USERS_KEY, [])
     const user = users.find((u) => u.email === email)
-    if (!user || user.password !== password) throw new Error('Invalid email or password.')
+    // Demo mode has no shared backend — accounts live in this browser only.
+    // If the email isn't found here (e.g. you signed up on a different Vercel
+    // URL/device), provision it on the spot so the hosted demo never dead-ends.
+    if (!user) return this.signUp(email, password, email.split('@')[0])
+    if (user.password !== password) throw new Error('Incorrect password for this account.')
     const session = { id: user.id, email: user.email, name: user.name }
     write(SESSION_KEY, session)
     return session

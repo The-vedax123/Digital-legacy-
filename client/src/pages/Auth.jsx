@@ -172,7 +172,8 @@ export default function Auth() {
 
           {!isSupabaseEnabled && (
             <p className="mt-6 rounded-2xl bg-brand/5 px-4 py-3 text-center text-xs text-slate-500 dark:text-slate-400">
-              Demo mode — data is stored securely on this device. Add Supabase keys to enable cloud sync.
+              <b>Demo mode.</b> Sign in with any email &amp; password to enter instantly — your vault is saved on this device.
+              Add Supabase keys for real cloud accounts across devices.
             </p>
           )}
         </motion.div>
