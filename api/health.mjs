@@ -1,4 +1,4 @@
-import { isGeminiEnabled } from './_lib/gemini.js'
+import { isGeminiEnabled } from './_lib/gemini.mjs'
 
 export default function handler(_req, res) {
   res.status(200).json({

@@ -106,25 +106,24 @@ When these are set, the app automatically switches from demo mode to real Supaba
 
 ## 🌐 Deployment
 
-### Option A — Everything on Vercel (recommended, one project)
+### Option A — Everything on Vercel (recommended, one project, zero config)
 
-The frontend **and** the Echo AI API deploy together on Vercel. The API lives in `client/api/**` as serverless functions (`/api/health`, `/api/ai/chat`, `/api/ai/categorize`, `/api/ai/summarize`), so no separate backend is needed and `VITE_API_URL` defaults to the same-domain `/api`.
+The frontend **and** the Echo AI API deploy together on Vercel from the **repository root** — no "Root Directory" change needed. The root [`vercel.json`](vercel.json) builds the Vite app in `client/` and the API lives in `/api/**` as serverless functions (`/api/health`, `/api/ai/chat`, `/api/ai/categorize`, `/api/ai/summarize`). `VITE_API_URL` defaults to the same-domain `/api`.
 
 **One-time setup:**
-1. Push this repo to GitHub (already done on this branch).
-2. In Vercel → **Add New… → Project** and import the repo.
-3. Set **Root Directory** to `client`. Vercel auto-detects Vite (`vercel.json` handles the build, SPA rewrites, and functions).
-4. Add environment variables (Project → Settings → Environment Variables):
-   - `GEMINI_API_KEY` *(optional — omit to use the built-in EchoBrain fallback)*
-   - `GEMINI_MODEL` = `gemini-1.5-flash` *(optional)*
-   - `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` *(optional — for cloud auth)*
+1. In Vercel → **Add New… → Project** and import this repo.
+2. Leave **Root Directory** as the default (`./`). The root `vercel.json` handles the build (`npm --prefix client install` + `npm --prefix client run build`), output (`client/dist`), SPA rewrites, and serverless functions.
+3. Make sure Vercel deploys the branch that contains the app. If it isn't on `main` yet, either merge it into `main`, or set **Settings → Git → Production Branch** to your feature branch.
+4. *(Optional)* Add environment variables (Project → Settings → Environment Variables):
+   - `GEMINI_API_KEY` *(omit to use the built-in EchoBrain fallback)*
+   - `GEMINI_MODEL` = `gemini-1.5-flash`
+   - `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` *(for cloud auth)*
 5. **Deploy.** That's it. 🎉
 
-**Or via CLI:**
+**Or via CLI (from the repo root):**
 ```bash
 npm i -g vercel
-cd client
-vercel            # first run: link/confirm settings (Root Directory = current)
+vercel            # first run: link/confirm; keep root directory as ./
 vercel --prod     # ship to production
 ```
 

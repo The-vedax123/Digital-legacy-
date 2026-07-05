@@ -1,5 +1,5 @@
-import { callGemini, isGeminiEnabled } from './gemini.js'
-import { echoAnswer, suggestCategory, summarizeText } from './echoBrain.js'
+import { callGemini, isGeminiEnabled } from './gemini.mjs'
+import { echoAnswer, suggestCategory, summarizeText } from './echoBrain.mjs'
 
 const buildSystemPrompt = () =>
   `You are "Echo", the warm, trustworthy AI assistant inside EchoVault — a secure Digital Legacy Platform.
