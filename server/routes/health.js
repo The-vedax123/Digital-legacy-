@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { activeProvider } from '../services/llm.js'
 
 export const healthRouter = Router()
 
@@ -7,6 +8,6 @@ healthRouter.get('/', (_req, res) => {
     status: 'ok',
     service: 'echovault-api',
     time: new Date().toISOString(),
-    ai: process.env.GEMINI_API_KEY ? 'gemini' : 'mock',
+    ai: activeProvider() || 'echo-brain',
   })
 })

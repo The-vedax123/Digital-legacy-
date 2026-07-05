@@ -4,6 +4,7 @@ import compression from 'compression'
 import dotenv from 'dotenv'
 import { aiRouter } from './routes/ai.js'
 import { healthRouter } from './routes/health.js'
+import { activeProvider } from './services/llm.js'
 
 dotenv.config()
 
@@ -33,5 +34,5 @@ app.use((err, _req, res, _next) => {
 
 app.listen(PORT, () => {
   console.log(`\n  EchoVault API running on http://localhost:${PORT}`)
-  console.log(`  Gemini: ${process.env.GEMINI_API_KEY ? 'ENABLED' : 'mock mode (no GEMINI_API_KEY)'}\n`)
+  console.log(`  AI provider: ${activeProvider() || 'EchoBrain (offline fallback — set GROQ_API_KEY/OPENROUTER_API_KEY/GEMINI_API_KEY for an LLM)'}\n`)
 })

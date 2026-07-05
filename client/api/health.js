@@ -1,4 +1,4 @@
-import { isGeminiEnabled } from './_lib/gemini.js'
+import { activeProvider } from './_lib/llm.js'
 
 export default function handler(_req, res) {
   res.status(200).json({
@@ -6,6 +6,6 @@ export default function handler(_req, res) {
     service: 'echovault-api',
     platform: 'vercel',
     time: new Date().toISOString(),
-    ai: isGeminiEnabled() ? 'gemini' : 'mock',
+    ai: activeProvider() || 'echo-brain',
   })
 }

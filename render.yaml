@@ -11,7 +11,10 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20.11.0
+      # Set ANY ONE of these free AI keys (or none → offline EchoBrain fallback)
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
       - key: GEMINI_API_KEY
         sync: false
-      - key: GEMINI_MODEL
-        value: gemini-1.5-flash

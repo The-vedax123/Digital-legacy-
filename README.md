@@ -115,8 +115,7 @@ The frontend **and** the Echo AI API deploy together on Vercel from the **reposi
 2. Leave **Root Directory** as the default (`./`). The root `vercel.json` handles the build (`npm --prefix client install` + `npm --prefix client run build`), output (`client/dist`), SPA rewrites, and serverless functions.
 3. Make sure Vercel deploys the branch that contains the app. If it isn't on `main` yet, either merge it into `main`, or set **Settings → Git → Production Branch** to your feature branch.
 4. *(Optional)* Add environment variables (Project → Settings → Environment Variables):
-   - `GEMINI_API_KEY` *(omit to use the built-in EchoBrain fallback)*
-   - `GEMINI_MODEL` = `gemini-1.5-flash`
+   - A **free AI key** for richer answers — any one of `GROQ_API_KEY` *(recommended)*, `OPENROUTER_API_KEY`, or `GEMINI_API_KEY`. Omit all to use the built-in EchoBrain fallback.
    - `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` *(for cloud auth)*
 5. **Deploy.** That's it. 🎉
 
@@ -152,7 +151,19 @@ Echo can:
 - Track what expires next & generate reminders
 - Suggest beneficiaries & help organize your vault
 
-Powered by Google Gemini, with a fully offline fallback so demos never break.
+### Bring your own (free) AI — pick any one
+Echo auto-detects a provider from environment variables, in this order. **All have free tiers**, and if none are set Echo uses the built-in offline **EchoBrain** (smart rule-based search over your vault) so it always works.
+
+| Provider | Env var | Free key | Default model |
+| --- | --- | --- | --- |
+| **Groq** (fast, recommended) | `GROQ_API_KEY` | [console.groq.com/keys](https://console.groq.com/keys) | `llama-3.3-70b-versatile` |
+| **OpenRouter** | `OPENROUTER_API_KEY` | [openrouter.ai/keys](https://openrouter.ai/keys) | `meta-llama/llama-3.3-70b-instruct:free` |
+| **Google Gemini** | `GEMINI_API_KEY` | [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) | `gemini-1.5-flash` |
+
+Set the key server-side (Express `.env`, or Vercel/Render project env vars). Optionally override the model with `GROQ_MODEL` / `OPENROUTER_MODEL` / `GEMINI_MODEL`.
+
+### How Echo is "trained"
+No fine-tuning required — Echo is shaped through **prompt engineering**: a rich persona, an explicit capability list, strict grounding rules (it only uses your vault context and never invents data), and **few-shot examples** that teach it EchoVault's warm, precise voice (see `server/services/prompt.js`). Your vault contents are passed as structured JSON context on every request, so answers are always grounded in *your* data.
 
 ---
 
