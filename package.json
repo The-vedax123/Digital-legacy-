@@ -1,0 +1,18 @@
+{
+  "name": "echovault",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EchoVault — a secure Digital Legacy Platform. Preserve, organize, and pass on your digital life.",
+  "scripts": {
+    "install:all": "npm install --prefix client && npm install --prefix server",
+    "dev": "concurrently -n api,web -c blue,magenta \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "npm --prefix server run dev",
+    "build": "npm --prefix client run build",
+    "lint": "npm --prefix client run lint",
+    "start:server": "npm --prefix server start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
