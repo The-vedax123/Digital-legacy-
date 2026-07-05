@@ -102,8 +102,14 @@ export default function Auth() {
       {/* Right form panel */}
       <div className="relative z-10 flex items-center justify-center p-5 sm:p-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-strong w-full max-w-md rounded-3xl p-7 sm:p-9">
-          <div className="mb-6 flex items-center justify-between lg:hidden">
-            <Link to="/"><Logo size="sm" /></Link>
+          <div className="mb-6 flex items-center justify-between gap-3">
+            <Link to="/" className="lg:hidden"><Logo size="sm" /></Link>
+            <Link
+              to="/"
+              className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-black/5 bg-white px-3 py-1.5 text-xs font-semibold text-stone-600 transition hover:bg-stone-50 hover:text-brand-700 dark:border-white/10 dark:bg-white/5 dark:text-stone-300"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" /> Back to home
+            </Link>
           </div>
 
           <AnimatePresence mode="wait">
