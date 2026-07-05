@@ -36,7 +36,7 @@ const catColors = {
   Certificates: 'bg-violet-500/15 text-violet-500',
   'Medical Records': 'bg-rose-500/15 text-rose-500',
   'Crypto Information': 'bg-orange-500/15 text-orange-500',
-  'Personal Documents': 'bg-slate-500/15 text-slate-500',
+  'Personal Documents': 'bg-stone-500/15 text-stone-500',
 }
 
 export default function Vault() {
@@ -89,12 +89,12 @@ export default function Vault() {
       {/* Controls */}
       <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="relative flex-1">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -transtone-y-1/2 text-stone-400" />
           <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search documents…" className="input pl-11" />
         </div>
         <div className="flex gap-2">
           <div className="relative">
-            <Filter className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+            <Filter className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -transtone-y-1/2 text-stone-400" />
             <select value={filterCat} onChange={(e) => setFilterCat(e.target.value)} className="input !w-auto appearance-none pl-9 pr-8">
               <option>All</option>
               {DOC_CATEGORIES.map((c) => (
@@ -137,19 +137,19 @@ export default function Vault() {
                   <div className="grid h-11 w-11 place-items-center rounded-2xl bg-brand/10 text-brand">
                     <FileText className="h-5 w-5" />
                   </div>
-                  <button onClick={() => remove(doc.id, doc.title)} className="text-slate-300 opacity-0 transition hover:text-danger group-hover:opacity-100">
+                  <button onClick={() => remove(doc.id, doc.title)} className="text-stone-300 opacity-0 transition hover:text-danger group-hover:opacity-100">
                     <Trash2 className="h-4 w-4" />
                   </button>
                 </div>
                 <h3 className="mt-4 font-bold leading-tight">{doc.title}</h3>
-                {doc.description && <p className="mt-1 line-clamp-2 text-xs text-slate-500 dark:text-slate-400">{doc.description}</p>}
+                {doc.description && <p className="mt-1 line-clamp-2 text-xs text-stone-500 dark:text-stone-400">{doc.description}</p>}
                 <div className="mt-3 flex flex-wrap gap-1.5">
-                  <span className={`chip ${catColors[doc.category] || 'bg-slate-500/15 text-slate-500'}`}>{doc.category}</span>
+                  <span className={`chip ${catColors[doc.category] || 'bg-stone-500/15 text-stone-500'}`}>{doc.category}</span>
                   <span className={`chip ${importanceColor(doc.importance)}`}>
                     <ShieldAlert className="h-3 w-3" /> {doc.importance}
                   </span>
                 </div>
-                <div className="mt-3 space-y-1 border-t border-slate-200/60 pt-3 text-xs text-slate-500 dark:border-white/5 dark:text-slate-400">
+                <div className="mt-3 space-y-1 border-t border-stone-200/60 pt-3 text-xs text-stone-500 dark:border-white/5 dark:text-stone-400">
                   {doc.beneficiary && (
                     <p className="flex items-center gap-1.5"><UserCheck className="h-3.5 w-3.5" /> {doc.beneficiary}</p>
                   )}
@@ -207,10 +207,10 @@ function UploadModal({ open, onClose, onSave }) {
   return (
     <Modal open={open} onClose={onClose} title="Upload Document" subtitle="Add a document to your encrypted vault." size="lg">
       <form onSubmit={submit} className="space-y-4">
-        <label className="flex cursor-pointer flex-col items-center justify-center rounded-3xl border-2 border-dashed border-slate-300 bg-slate-500/5 py-8 text-center transition hover:border-brand hover:bg-brand/5 dark:border-white/10">
+        <label className="flex cursor-pointer flex-col items-center justify-center rounded-3xl border-2 border-dashed border-stone-300 bg-stone-500/5 py-8 text-center transition hover:border-brand hover:bg-brand/5 dark:border-white/10">
           <Upload className="h-8 w-8 text-brand" />
           <span className="mt-2 text-sm font-semibold">{form.fileName || 'Click to select a file'}</span>
-          <span className="text-xs text-slate-400">PDF, image or document · stored securely</span>
+          <span className="text-xs text-stone-400">PDF, image or document · stored securely</span>
           <input type="file" className="hidden" onChange={onFile} />
         </label>
 

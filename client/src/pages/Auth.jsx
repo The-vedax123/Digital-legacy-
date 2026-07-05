@@ -90,11 +90,11 @@ export default function Auth() {
           <h2 className="mt-6 max-w-md text-4xl font-extrabold leading-tight">
             Your legacy, <span className="gradient-text">secured for the ones you love.</span>
           </h2>
-          <p className="mt-4 max-w-md text-slate-600 dark:text-slate-300">
+          <p className="mt-4 max-w-md text-stone-600 dark:text-stone-300">
             Documents, memories, wishes and time capsules — all protected in one beautiful, private vault.
           </p>
         </div>
-        <div className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400">
+        <div className="flex items-center gap-3 text-sm text-stone-500 dark:text-stone-400">
           <Sparkles className="h-4 w-4 text-brand" /> Powered by Echo AI & built for the Cursor Mobilethon
         </div>
       </div>
@@ -111,7 +111,7 @@ export default function Auth() {
               <h1 className="text-2xl font-extrabold">
                 {mode === 'signin' ? 'Welcome back' : mode === 'signup' ? 'Create your vault' : 'Reset password'}
               </h1>
-              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+              <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">
                 {mode === 'signin'
                   ? 'Sign in to access your digital legacy.'
                   : mode === 'signup'
@@ -144,8 +144,8 @@ export default function Auth() {
 
               {mode !== 'forgot' ? (
                 <>
-                  <div className="my-5 flex items-center gap-3 text-xs font-semibold uppercase text-slate-400">
-                    <span className="h-px flex-1 bg-slate-200 dark:bg-white/10" /> or <span className="h-px flex-1 bg-slate-200 dark:bg-white/10" />
+                  <div className="my-5 flex items-center gap-3 text-xs font-semibold uppercase text-stone-400">
+                    <span className="h-px flex-1 bg-stone-200 dark:bg-white/10" /> or <span className="h-px flex-1 bg-stone-200 dark:bg-white/10" />
                   </div>
                   <div className="space-y-2.5">
                     <button onClick={google} disabled={busy} className="btn-ghost w-full">
@@ -155,7 +155,7 @@ export default function Auth() {
                       <Sparkles className="h-4 w-4" /> Explore the live demo
                     </button>
                   </div>
-                  <p className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
+                  <p className="mt-6 text-center text-sm text-stone-500 dark:text-stone-400">
                     {mode === 'signin' ? "Don't have a vault?" : 'Already have a vault?'}{' '}
                     <button onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')} className="font-bold text-brand hover:underline">
                       {mode === 'signin' ? 'Sign up' : 'Sign in'}
@@ -171,7 +171,7 @@ export default function Auth() {
           </AnimatePresence>
 
           {!isSupabaseEnabled && (
-            <p className="mt-6 rounded-2xl bg-brand/5 px-4 py-3 text-center text-xs text-slate-500 dark:text-slate-400">
+            <p className="mt-6 rounded-2xl bg-brand/5 px-4 py-3 text-center text-xs text-stone-500 dark:text-stone-400">
               <b>Demo mode.</b> Sign in with any email &amp; password to enter instantly — your vault is saved on this device.
               Add Supabase keys for real cloud accounts across devices.
             </p>
@@ -187,7 +187,7 @@ function Field({ icon: Icon, label, ...props }) {
     <div>
       <label className="label">{label}</label>
       <div className="relative">
-        <Icon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+        <Icon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -transtone-y-1/2 text-stone-400" />
         <input {...props} className="input pl-11" />
       </div>
     </div>

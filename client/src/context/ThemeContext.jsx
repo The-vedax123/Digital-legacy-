@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 const ThemeContext = createContext(null)
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => localStorage.getItem('echovault:theme') || 'dark')
+  const [theme, setTheme] = useState(() => localStorage.getItem('echovault:theme') || 'light')
 
   useEffect(() => {
     const root = document.documentElement
@@ -11,7 +11,7 @@ export function ThemeProvider({ children }) {
     else root.classList.remove('dark')
     localStorage.setItem('echovault:theme', theme)
     const meta = document.querySelector('meta[name="theme-color"]')
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0b1120' : '#f6f7fb')
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#14170f' : '#f4f1e9')
   }, [theme])
 
   const toggle = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))

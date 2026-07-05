@@ -33,7 +33,7 @@ export default function Emergency() {
     { key: 'conditions', label: 'Medical Conditions', icon: HeartPulse, color: 'text-rose-500' },
     { key: 'medication', label: 'Current Medication', icon: Pill, color: 'text-brand' },
     { key: 'insurance', label: 'Insurance', icon: ShieldAlert, color: 'text-emerald-500' },
-    { key: 'doctor', label: 'Doctor', icon: Stethoscope, color: 'text-violet2-400' },
+    { key: 'doctor', label: 'Doctor', icon: Stethoscope, color: 'text-lav' },
     { key: 'emergencyContacts', label: 'Emergency Contacts', icon: Phone, color: 'text-success' },
   ]
 
@@ -61,10 +61,10 @@ export default function Emergency() {
             <p className="text-sm text-white/80">In case of emergency, please review the details below.</p>
           </div>
 
-          <div className="grid gap-px bg-slate-200/60 p-px dark:bg-white/5 sm:grid-cols-2">
+          <div className="grid gap-px bg-stone-200/60 p-px dark:bg-white/5 sm:grid-cols-2">
             {fields.map((f) => (
               <div key={f.key} className="bg-white p-4 dark:bg-surface">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-slate-400">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-stone-400">
                   <f.icon className={`h-4 w-4 ${f.color}`} /> {f.label}
                 </div>
                 {editing ? (
@@ -75,7 +75,7 @@ export default function Emergency() {
                     className="input mt-2 !py-2 !text-sm"
                   />
                 ) : (
-                  <p className="mt-1 text-sm font-medium">{e[f.key] || <span className="text-slate-400">Not set</span>}</p>
+                  <p className="mt-1 text-sm font-medium">{e[f.key] || <span className="text-stone-400">Not set</span>}</p>
                 )}
               </div>
             ))}
@@ -97,7 +97,7 @@ export default function Emergency() {
           <div className="mt-5 rounded-3xl bg-white p-4 shadow-lg">
             <QRCodeSVG value={qrPayload} size={168} level="M" fgColor="#0F172A" />
           </div>
-          <p className="mt-5 text-xs text-slate-500 dark:text-slate-400">
+          <p className="mt-5 text-xs text-stone-500 dark:text-stone-400">
             First responders can scan this code to instantly access your critical medical information — even if your phone is locked.
           </p>
         </motion.div>

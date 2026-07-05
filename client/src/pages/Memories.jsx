@@ -12,7 +12,7 @@ import { MEMORY_TYPES, timeAgo } from '../lib/utils'
 const typeMeta = {
   photo: { icon: Camera, label: 'Photo', color: 'from-blue-500 to-brand' },
   video: { icon: Video, label: 'Video', color: 'from-rose-500 to-pink-500' },
-  voice: { icon: Mic, label: 'Voice Note', color: 'from-violet2-500 to-fuchsia-500' },
+  voice: { icon: Mic, label: 'Voice Note', color: 'from-lav to-purple-400' },
   letter: { icon: Mail, label: 'Letter', color: 'from-amber-500 to-warning' },
   story: { icon: BookOpen, label: 'Story', color: 'from-emerald-500 to-success' },
   achievement: { icon: Trophy, label: 'Achievement', color: 'from-yellow-500 to-amber-500' },
@@ -75,12 +75,12 @@ export default function Memories() {
                   <div className="p-5">
                     <h3 className="font-bold leading-tight">{m.title}</h3>
                     {m.summary && (
-                      <div className="mt-2 flex items-start gap-1.5 rounded-2xl bg-brand/5 p-2.5 text-xs text-slate-600 dark:text-slate-300">
+                      <div className="mt-2 flex items-start gap-1.5 rounded-2xl bg-brand/5 p-2.5 text-xs text-stone-600 dark:text-stone-300">
                         <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand" />
                         <span>{m.summary}</span>
                       </div>
                     )}
-                    <p className="mt-3 text-xs text-slate-400">Saved {timeAgo(m.createdAt)}</p>
+                    <p className="mt-3 text-xs text-stone-400">Saved {timeAgo(m.createdAt)}</p>
                   </div>
                 </motion.div>
               )
@@ -96,7 +96,7 @@ export default function Memories() {
 
 function FilterChip({ active, onClick, children }) {
   return (
-    <button onClick={onClick} className={`chip transition ${active ? 'bg-brand-gradient text-white shadow-glow' : 'bg-slate-500/10 text-slate-500 hover:bg-slate-500/20 dark:text-slate-300'}`}>
+    <button onClick={onClick} className={`chip transition ${active ? 'bg-brand-gradient text-white shadow-glow' : 'bg-stone-500/10 text-stone-500 hover:bg-stone-500/20 dark:text-stone-300'}`}>
       {children}
     </button>
   )
@@ -136,7 +136,7 @@ function MemoryModal({ open, onClose, onSave }) {
               const Icon = M.icon
               const active = form.type === t
               return (
-                <button type="button" key={t} onClick={() => setForm((f) => ({ ...f, type: t }))} className={`flex flex-col items-center gap-1 rounded-2xl border p-3 text-xs font-semibold transition ${active ? 'border-brand bg-brand/10 text-brand' : 'border-slate-200 text-slate-500 hover:border-brand/40 dark:border-white/10 dark:text-slate-300'}`}>
+                <button type="button" key={t} onClick={() => setForm((f) => ({ ...f, type: t }))} className={`flex flex-col items-center gap-1 rounded-2xl border p-3 text-xs font-semibold transition ${active ? 'border-brand bg-brand/10 text-brand' : 'border-stone-200 text-stone-500 hover:border-brand/40 dark:border-white/10 dark:text-stone-300'}`}>
                   <Icon className="h-5 w-5" /> {M.label}
                 </button>
               )

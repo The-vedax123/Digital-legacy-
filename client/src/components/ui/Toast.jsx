@@ -39,7 +39,7 @@ export function ToastProvider({ children }) {
             >
               {icons[t.type]}
               <span className="flex-1">{t.message}</span>
-              <button onClick={() => dismiss(t.id)} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+              <button onClick={() => dismiss(t.id)} className="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200">
                 <X className="h-4 w-4" />
               </button>
             </motion.div>

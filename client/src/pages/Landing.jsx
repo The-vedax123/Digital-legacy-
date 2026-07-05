@@ -69,7 +69,7 @@ export default function Landing() {
       {/* Nav */}
       <header className="relative z-20 mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
         <Logo />
-        <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-600 dark:text-slate-300 md:flex">
+        <nav className="hidden items-center gap-7 text-sm font-semibold text-stone-600 dark:text-stone-300 md:flex">
           <a href="#features" className="hover:text-brand">Features</a>
           <a href="#security" className="hover:text-brand">Security</a>
           <a href="#capsule" className="hover:text-brand">Time Capsule</a>
@@ -103,7 +103,7 @@ export default function Landing() {
           initial="hidden"
           animate="show"
           custom={2}
-          className="mx-auto mt-5 max-w-2xl text-base text-slate-600 dark:text-slate-300 sm:text-lg"
+          className="mx-auto mt-5 max-w-2xl text-base text-stone-600 dark:text-stone-300 sm:text-lg"
         >
           Store your important documents, memories and wishes securely so the people who matter most are never left in the dark.
         </motion.p>
@@ -128,18 +128,18 @@ export default function Landing() {
           transition={{ delay: 0.5, duration: 0.7 }}
           className="glass-strong mx-auto mt-16 max-w-4xl overflow-hidden rounded-3xl p-1.5"
         >
-          <div className="rounded-[1.4rem] bg-gradient-to-b from-slate-50 to-white p-5 dark:from-slate-900 dark:to-ink sm:p-8">
+          <div className="rounded-[1.4rem] bg-gradient-to-b from-stone-50 to-white p-5 dark:from-stone-900 dark:to-ink sm:p-8">
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {[
                 { icon: FolderLock, label: 'Documents', value: '24', color: 'text-brand' },
-                { icon: Images, label: 'Memories', value: '58', color: 'text-violet2-400' },
+                { icon: Images, label: 'Memories', value: '58', color: 'text-lav' },
                 { icon: Hourglass, label: 'Capsules', value: '3', color: 'text-warning' },
                 { icon: Users, label: 'Trusted', value: '5', color: 'text-success' },
               ].map((s) => (
                 <div key={s.label} className="glass rounded-2xl p-4 text-left">
                   <s.icon className={`h-6 w-6 ${s.color}`} />
                   <p className="mt-3 text-2xl font-extrabold">{s.value}</p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">{s.label}</p>
+                  <p className="text-xs text-stone-500 dark:text-stone-400">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -168,7 +168,7 @@ export default function Landing() {
                 <f.icon className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-lg font-bold">{f.title}</h3>
-              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{f.desc}</p>
+              <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">{f.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -185,7 +185,7 @@ export default function Landing() {
             <motion.div key={s.title} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={i} className="glass rounded-3xl p-6">
               <s.icon className="h-8 w-8 text-brand" />
               <h3 className="mt-4 text-lg font-bold">{s.title}</h3>
-              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{s.desc}</p>
+              <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">{s.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -200,13 +200,13 @@ export default function Landing() {
                 <Hourglass className="h-3.5 w-3.5" /> Digital Time Capsule
               </div>
               <h3 className="mt-4 text-2xl font-extrabold sm:text-3xl">Words that arrive exactly when they’re needed.</h3>
-              <p className="mt-3 text-slate-600 dark:text-slate-300">
+              <p className="mt-3 text-stone-600 dark:text-stone-300">
                 “Happy 18th Birthday.” “Open after graduation.” “For my future child.” “For my wife on our anniversary.” Seal a moment today and let EchoVault deliver it on the perfect day.
               </p>
               <Link to="/auth" className="btn-primary mt-6 inline-flex">Create your first capsule <ArrowRight className="h-4 w-4" /></Link>
             </div>
             <div className="glass rounded-3xl p-6 text-center">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Unlocks in</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-stone-400">Unlocks in</p>
               <div className="mt-4 grid grid-cols-4 gap-2">
                 {[{ v: '1,096', l: 'Days' }, { v: '14', l: 'Hrs' }, { v: '32', l: 'Min' }, { v: '08', l: 'Sec' }].map((c) => (
                   <div key={c.l} className="rounded-2xl bg-brand-gradient p-3 text-white">
@@ -216,7 +216,7 @@ export default function Landing() {
                 ))}
               </div>
               <p className="mt-5 text-sm font-semibold">“Happy 18th Birthday, Zara” 🎂</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400">A letter, photos & a voice note — sealed with love.</p>
+              <p className="text-xs text-stone-500 dark:text-stone-400">A letter, photos & a voice note — sealed with love.</p>
             </div>
           </div>
         </motion.div>
@@ -253,14 +253,14 @@ export default function Landing() {
                   <Star key={s} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">“{t.quote}”</p>
+              <p className="mt-4 text-sm text-stone-600 dark:text-stone-300">“{t.quote}”</p>
               <div className="mt-5 flex items-center gap-3">
                 <div className="grid h-10 w-10 place-items-center rounded-full bg-brand-gradient text-sm font-bold text-white">
                   {t.name[0]}
                 </div>
                 <div>
                   <p className="text-sm font-bold">{t.name}</p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">{t.role}</p>
+                  <p className="text-xs text-stone-500 dark:text-stone-400">{t.role}</p>
                 </div>
               </div>
             </motion.div>
@@ -278,14 +278,14 @@ export default function Landing() {
                 className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-bold"
               >
                 {f.q}
-                <ChevronDown className={`h-5 w-5 shrink-0 transition ${openFaq === i ? 'rotate-180 text-brand' : 'text-slate-400'}`} />
+                <ChevronDown className={`h-5 w-5 shrink-0 transition ${openFaq === i ? 'rotate-180 text-brand' : 'text-stone-400'}`} />
               </button>
               <motion.div
                 initial={false}
                 animate={{ height: openFaq === i ? 'auto' : 0, opacity: openFaq === i ? 1 : 0 }}
                 className="overflow-hidden"
               >
-                <p className="px-5 pb-4 text-sm text-slate-500 dark:text-slate-400">{f.a}</p>
+                <p className="px-5 pb-4 text-sm text-stone-500 dark:text-stone-400">{f.a}</p>
               </motion.div>
             </div>
           ))}
@@ -305,8 +305,8 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-slate-200/60 dark:border-white/5">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-8 text-sm text-slate-500 dark:text-slate-400 sm:flex-row">
+      <footer className="relative z-10 border-t border-stone-200/60 dark:border-white/5">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-8 text-sm text-stone-500 dark:text-stone-400 sm:flex-row">
           <Logo size="sm" />
           <p>© {new Date().getFullYear()} EchoVault. Built with love for the Cursor Mobilethon.</p>
           <div className="flex gap-5 font-semibold">

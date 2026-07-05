@@ -100,7 +100,7 @@ export default function Settings() {
         {/* Security & Privacy */}
         <Card icon={Shield} title="Security & Privacy">
           <Toggle label="Privacy lock" desc="Require re-authentication to open sensitive items." on={toggles.privacyLock} onClick={() => flip('privacyLock')} />
-          <div className="mt-2 flex items-center gap-2 rounded-2xl bg-brand/5 p-3 text-xs text-slate-500 dark:text-slate-400">
+          <div className="mt-2 flex items-center gap-2 rounded-2xl bg-brand/5 p-3 text-xs text-stone-500 dark:text-stone-400">
             <Lock className="h-4 w-4 shrink-0 text-brand" />
             {isSupabaseEnabled
               ? 'Your data is protected by Supabase authentication and row-level security.'
@@ -111,10 +111,10 @@ export default function Settings() {
         {/* Storage */}
         <Card icon={HardDrive} title="Storage">
           <div className="flex items-end justify-between">
-            <p className="text-2xl font-extrabold">{storage.usedGb.toFixed(1)}<span className="text-sm font-semibold text-slate-400"> / {storage.totalGb} GB used</span></p>
+            <p className="text-2xl font-extrabold">{storage.usedGb.toFixed(1)}<span className="text-sm font-semibold text-stone-400"> / {storage.totalGb} GB used</span></p>
             <span className="chip bg-brand/10 text-brand">{storage.percent}%</span>
           </div>
-          <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-white/10">
+          <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-stone-200 dark:bg-white/10">
             <div className="h-full rounded-full bg-brand-gradient" style={{ width: `${storage.percent}%` }} />
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -154,9 +154,9 @@ function Toggle({ label, desc, on, onClick }) {
     <div className="flex items-center justify-between gap-4 py-2.5">
       <div>
         <p className="text-sm font-semibold">{label}</p>
-        {desc && <p className="text-xs text-slate-500 dark:text-slate-400">{desc}</p>}
+        {desc && <p className="text-xs text-stone-500 dark:text-stone-400">{desc}</p>}
       </div>
-      <button onClick={onClick} className={`relative h-7 w-12 shrink-0 rounded-full transition ${on ? 'bg-brand-gradient' : 'bg-slate-300 dark:bg-white/15'}`}>
+      <button onClick={onClick} className={`relative h-7 w-12 shrink-0 rounded-full transition ${on ? 'bg-brand-gradient' : 'bg-stone-300 dark:bg-white/15'}`}>
         <span className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow transition-all ${on ? 'left-6' : 'left-1'}`} />
       </button>
     </div>
@@ -165,7 +165,7 @@ function Toggle({ label, desc, on, onClick }) {
 
 function ThemeOption({ active, onClick, icon: Icon, label }) {
   return (
-    <button onClick={onClick} className={`flex items-center justify-center gap-2 rounded-2xl border-2 p-4 text-sm font-semibold transition ${active ? 'border-brand bg-brand/10 text-brand' : 'border-slate-200 text-slate-500 hover:border-brand/40 dark:border-white/10 dark:text-slate-300'}`}>
+    <button onClick={onClick} className={`flex items-center justify-center gap-2 rounded-2xl border-2 p-4 text-sm font-semibold transition ${active ? 'border-brand bg-brand/10 text-brand' : 'border-stone-200 text-stone-500 hover:border-brand/40 dark:border-white/10 dark:text-stone-300'}`}>
       <Icon className="h-5 w-5" /> {label}
     </button>
   )

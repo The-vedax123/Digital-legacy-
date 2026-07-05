@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Sparkles, Send, User, Bot } from 'lucide-react'
 import { useData } from '../context/DataContext'
@@ -24,10 +25,21 @@ export default function Echo() {
   const [input, setInput] = useState('')
   const [busy, setBusy] = useState(false)
   const scrollRef = useRef(null)
+  const location = useLocation()
+  const sentInitial = useRef(false)
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
   }, [messages, busy])
+
+  useEffect(() => {
+    const prompt = location.state?.prompt
+    if (prompt && !sentInitial.current) {
+      sentInitial.current = true
+      send(prompt)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.state])
 
   const send = async (text) => {
     const message = (text ?? input).trim()
@@ -63,7 +75,7 @@ export default function Echo() {
         </div>
         <div>
           <h1 className="text-xl font-extrabold">Echo AI</h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400">Your intelligent legacy assistant · always here</p>
+          <p className="text-xs text-stone-500 dark:text-stone-400">Your intelligent legacy assistant · always here</p>
         </div>
       </div>
 
@@ -71,10 +83,10 @@ export default function Echo() {
       <div ref={scrollRef} className="glass no-scrollbar flex-1 space-y-4 overflow-y-auto rounded-3xl p-4 sm:p-6">
         {messages.map((m, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className={`flex gap-3 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}>
-            <div className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${m.role === 'user' ? 'bg-slate-500/15 text-slate-500 dark:text-slate-300' : 'bg-brand-gradient text-white'}`}>
+            <div className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${m.role === 'user' ? 'bg-stone-500/15 text-stone-500 dark:text-stone-300' : 'bg-brand-gradient text-white'}`}>
               {m.role === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
             </div>
-            <div className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-relaxed ${m.role === 'user' ? 'bg-brand-gradient text-white' : 'bg-slate-500/10 dark:bg-white/5'}`}>
+            <div className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-relaxed ${m.role === 'user' ? 'bg-brand-gradient text-white' : 'bg-stone-500/10 dark:bg-white/5'}`}>
               {m.text}
             </div>
           </motion.div>
@@ -84,7 +96,7 @@ export default function Echo() {
             <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-gradient text-white">
               <Bot className="h-4 w-4" />
             </div>
-            <div className="flex items-center gap-1 rounded-2xl bg-slate-500/10 px-4 py-3.5 dark:bg-white/5">
+            <div className="flex items-center gap-1 rounded-2xl bg-stone-500/10 px-4 py-3.5 dark:bg-white/5">
               {[0, 1, 2].map((d) => (
                 <span key={d} className="h-2 w-2 animate-bounce rounded-full bg-brand" style={{ animationDelay: `${d * 0.15}s` }} />
               ))}
@@ -96,7 +108,7 @@ export default function Echo() {
       {/* Suggestions */}
       <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto pb-1">
         {suggestions.map((s) => (
-          <button key={s} onClick={() => send(s)} disabled={busy} className="chip shrink-0 whitespace-nowrap bg-slate-500/10 text-slate-600 transition hover:bg-brand/10 hover:text-brand dark:text-slate-300">
+          <button key={s} onClick={() => send(s)} disabled={busy} className="chip shrink-0 whitespace-nowrap bg-stone-500/10 text-stone-600 transition hover:bg-brand/10 hover:text-brand dark:text-stone-300">
             {s}
           </button>
         ))}

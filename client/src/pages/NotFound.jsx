@@ -14,7 +14,7 @@ export default function NotFound() {
           <Compass className="h-10 w-10 text-white" />
         </div>
         <h1 className="mt-6 text-5xl font-extrabold">404</h1>
-        <p className="mt-2 max-w-sm text-slate-500 dark:text-slate-400">This page has drifted beyond your vault. Let’s get you back home.</p>
+        <p className="mt-2 max-w-sm text-stone-500 dark:text-stone-400">This page has drifted beyond your vault. Let’s get you back home.</p>
         <Link to="/" className="btn-primary mt-6 inline-flex">Back to safety</Link>
       </motion.div>
     </div>

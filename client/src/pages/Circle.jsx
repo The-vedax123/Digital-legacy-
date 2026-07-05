@@ -57,16 +57,16 @@ export default function Circle() {
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <h3 className="font-bold leading-tight">{c.name}</h3>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">{c.relationship}</p>
+                        <p className="text-xs text-stone-500 dark:text-stone-400">{c.relationship}</p>
                       </div>
-                      <button onClick={() => { data.deleteContact(c.id); toast('Contact removed', 'info') }} className="text-slate-300 opacity-0 transition hover:text-danger group-hover:opacity-100">
+                      <button onClick={() => { data.deleteContact(c.id); toast('Contact removed', 'info') }} className="text-stone-300 opacity-0 transition hover:text-danger group-hover:opacity-100">
                         <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
                     <span className={`chip mt-2 ${permissionColor(c.permission)}`}>
                       <Shield className="h-3 w-3" /> {c.permission}
                     </span>
-                    <div className="mt-3 space-y-1 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="mt-3 space-y-1 text-xs text-stone-500 dark:text-stone-400">
                       {c.phone && <p className="flex items-center gap-1.5"><Phone className="h-3.5 w-3.5" /> {c.phone}</p>}
                       {c.email && <p className="flex items-center gap-1.5"><Mail className="h-3.5 w-3.5" /> {c.email}</p>}
                     </div>
@@ -124,7 +124,7 @@ function ContactModal({ open, onClose, onSave }) {
               <option key={p}>{p}</option>
             ))}
           </select>
-          <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{permissionDesc[form.permission]}</p>
+          <p className="mt-2 text-xs text-stone-500 dark:text-stone-400">{permissionDesc[form.permission]}</p>
         </div>
         <div className="flex gap-3 pt-2">
           <button type="button" onClick={onClose} className="btn-ghost flex-1">Cancel</button>

@@ -57,20 +57,20 @@ export const CAPSULE_UNLOCK = [
 
 export const importanceColor = (level) =>
   ({
-    Low: 'bg-slate-500/15 text-slate-500 dark:text-slate-300',
+    Low: 'bg-stone-500/15 text-stone-500 dark:text-stone-300',
     Medium: 'bg-brand/15 text-brand dark:text-brand-300',
     High: 'bg-warning/15 text-warning',
     Critical: 'bg-danger/15 text-danger',
-  }[level] || 'bg-slate-500/15 text-slate-500')
+  }[level] || 'bg-stone-500/15 text-stone-500')
 
 export const permissionColor = (level) =>
   ({
-    Viewer: 'bg-slate-500/15 text-slate-500 dark:text-slate-300',
+    Viewer: 'bg-stone-500/15 text-stone-500 dark:text-stone-300',
     Family: 'bg-success/15 text-success',
     Lawyer: 'bg-brand/15 text-brand dark:text-brand-300',
     'Business Partner': 'bg-warning/15 text-warning',
-    Administrator: 'bg-violet2/15 text-violet2-400',
-  }[level] || 'bg-slate-500/15 text-slate-500')
+    Administrator: 'bg-lav/15 text-lav',
+  }[level] || 'bg-stone-500/15 text-stone-500')
 
 /** Rough storage estimate for the demo dashboard. */
 export function estimateStorage(data) {

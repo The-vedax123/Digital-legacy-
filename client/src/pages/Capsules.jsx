@@ -97,10 +97,10 @@ function CapsuleCard({ capsule, onOpen, onDelete }) {
       <div className="p-4">
         <div className="mb-3 flex flex-wrap gap-1.5">
           {(capsule.items || []).map((i) => (
-            <span key={i} className="chip bg-slate-500/10 text-slate-500 dark:text-slate-300">{i}</span>
+            <span key={i} className="chip bg-stone-500/10 text-stone-500 dark:text-stone-300">{i}</span>
           ))}
         </div>
-        <p className="mb-3 text-xs text-slate-400">{manual ? 'Manual unlock' : `Unlocks ${formatDate(capsule.unlockDate)}`}</p>
+        <p className="mb-3 text-xs text-stone-400">{manual ? 'Manual unlock' : `Unlocks ${formatDate(capsule.unlockDate)}`}</p>
         <button onClick={onOpen} disabled={!unlocked} className={unlocked ? 'btn-primary w-full !py-2.5' : 'btn-ghost w-full !py-2.5'}>
           {unlocked ? <><Gift className="h-4 w-4" /> Open Capsule</> : <><Lock className="h-4 w-4" /> Sealed</>}
         </button>
@@ -199,14 +199,14 @@ function CapsuleModal({ open, onClose, onSave }) {
           <label className="label">What’s inside?</label>
           <div className="flex flex-wrap gap-2">
             {capsuleItems.map((item) => (
-              <button type="button" key={item} onClick={() => toggleItem(item)} className={`chip transition ${form.items.includes(item) ? 'bg-brand-gradient text-white' : 'bg-slate-500/10 text-slate-500 dark:text-slate-300'}`}>
+              <button type="button" key={item} onClick={() => toggleItem(item)} className={`chip transition ${form.items.includes(item) ? 'bg-brand-gradient text-white' : 'bg-stone-500/10 text-stone-500 dark:text-stone-300'}`}>
                 {item}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="flex items-center gap-2 rounded-2xl bg-brand/5 p-3 text-xs text-slate-500 dark:text-slate-400">
+        <div className="flex items-center gap-2 rounded-2xl bg-brand/5 p-3 text-xs text-stone-500 dark:text-stone-400">
           <Sparkles className="h-4 w-4 shrink-0 text-brand" />
           Once sealed, this capsule stays locked with a live countdown until its moment arrives.
         </div>

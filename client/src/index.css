@@ -1,12 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  color-scheme: dark;
-}
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -15,82 +11,99 @@ html {
 
 @layer base {
   body {
-    @apply font-sans antialiased text-slate-800 dark:text-slate-100;
-    background-color: #f6f7fb;
+    @apply font-sans antialiased text-bark;
+    background-color: #f4f1e9;
     min-height: 100vh;
     min-height: 100dvh;
   }
 
   .dark body {
-    background-color: #0b1120;
+    @apply text-stone-100;
+    background-color: #14170f;
   }
 
-  h1, h2, h3, .font-display {
-    font-family: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  h1, h2, .font-display {
+    font-family: 'Fraunces', Georgia, Cambria, 'Times New Roman', serif;
     @apply tracking-tight;
+    font-optical-sizing: auto;
+  }
+
+  h3 {
+    @apply font-semibold tracking-tight;
   }
 
   ::selection {
-    background: rgba(124, 58, 237, 0.3);
+    background: rgba(110, 139, 106, 0.28);
   }
 }
 
 @layer components {
-  /* Glassmorphism card */
+  /* Soft, warm card (the design language of the reference) */
   .glass {
-    @apply rounded-3xl border backdrop-blur-xl transition-colors;
-    background: rgba(255, 255, 255, 0.72);
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+    @apply rounded-3xl border transition-colors;
+    background: #ffffff;
+    border-color: rgba(52, 45, 28, 0.07);
+    box-shadow: 0 4px 24px rgba(52, 45, 28, 0.05);
   }
 
   .dark .glass {
-    background: rgba(30, 41, 59, 0.6);
-    border-color: rgba(148, 163, 184, 0.12);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    background: #20261b;
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
   }
 
   .glass-strong {
-    @apply rounded-3xl border backdrop-blur-2xl;
-    background: rgba(255, 255, 255, 0.9);
-    border-color: rgba(226, 232, 240, 0.9);
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+    @apply rounded-3xl border;
+    background: #ffffff;
+    border-color: rgba(52, 45, 28, 0.08);
+    box-shadow: 0 18px 50px rgba(52, 45, 28, 0.1);
   }
 
   .dark .glass-strong {
-    background: rgba(30, 41, 59, 0.85);
-    border-color: rgba(148, 163, 184, 0.15);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    background: #232a1d;
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.5);
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold transition-all duration-200 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-brand/40 disabled:opacity-60 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold transition-all duration-200 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-brand/30 disabled:opacity-60 disabled:pointer-events-none;
   }
 
   .btn-primary {
-    @apply btn text-white shadow-lg;
-    background-image: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+    @apply btn text-white;
+    background-image: linear-gradient(135deg, #4a6244 0%, #374b30 100%);
+    box-shadow: 0 8px 22px rgba(55, 75, 48, 0.22);
   }
 
   .btn-primary:hover {
-    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.35);
+    box-shadow: 0 12px 28px rgba(55, 75, 48, 0.3);
     transform: translateY(-1px);
   }
 
   .btn-ghost {
-    @apply btn bg-white/60 text-slate-700 border border-slate-200 hover:bg-white dark:bg-white/5 dark:text-slate-100 dark:border-white/10 dark:hover:bg-white/10;
+    @apply btn border bg-white text-bark hover:bg-stone-50 dark:bg-white/5 dark:text-stone-100 dark:hover:bg-white/10;
+    border-color: rgba(52, 45, 28, 0.12);
+  }
+
+  .dark .btn-ghost {
+    border-color: rgba(255, 255, 255, 0.1);
   }
 
   .btn-soft {
-    @apply btn bg-brand/10 text-brand hover:bg-brand/20 dark:bg-brand/20 dark:text-brand-200;
+    @apply btn bg-brand/10 text-brand-700 hover:bg-brand/15 dark:bg-brand/20 dark:text-brand-200;
   }
 
   .input {
-    @apply w-full rounded-2xl border border-slate-200 bg-white/70 px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/30 dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:placeholder-slate-500;
+    @apply w-full rounded-2xl border bg-white px-4 py-3 text-sm text-bark placeholder-stone-400 outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/25 dark:bg-white/5 dark:text-stone-100 dark:placeholder-stone-500;
+    border-color: rgba(52, 45, 28, 0.12);
+  }
+
+  .dark .input {
+    border-color: rgba(255, 255, 255, 0.1);
   }
 
   .label {
-    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400;
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-stone-500 dark:text-stone-400;
   }
 
   .chip {
@@ -99,7 +112,7 @@ html {
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+    background-image: linear-gradient(120deg, #5e7f53 0%, #354732 100%);
   }
 
   .card-hover {
@@ -107,7 +120,7 @@ html {
   }
 }
 
-/* Custom scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -116,14 +129,14 @@ html {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(124, 58, 237, 0.3);
+  background: rgba(110, 139, 106, 0.35);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(124, 58, 237, 0.5);
+  background: rgba(110, 139, 106, 0.55);
 }
 
-/* Aurora background blobs */
+/* Botanical soft background glow */
 .aurora {
   position: fixed;
   inset: 0;
@@ -134,10 +147,13 @@ html {
 .aurora span {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.4;
+  filter: blur(90px);
+  opacity: 0.35;
 }
+.dark .aurora span {
+  opacity: 0.22;
+}
+
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
 .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }

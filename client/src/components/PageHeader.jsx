@@ -15,7 +15,7 @@ export default function PageHeader({ title, subtitle, icon: Icon, action }) {
         )}
         <div>
           <h1 className="text-2xl font-extrabold sm:text-3xl">{title}</h1>
-          {subtitle && <p className="mt-0.5 text-sm text-slate-500 dark:text-slate-400">{subtitle}</p>}
+          {subtitle && <p className="mt-0.5 text-sm text-stone-500 dark:text-stone-400">{subtitle}</p>}
         </div>
       </div>
       {action && <div className="shrink-0">{action}</div>}
