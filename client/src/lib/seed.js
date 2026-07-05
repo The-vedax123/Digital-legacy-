@@ -1,0 +1,148 @@
+import { addDays, addYears } from 'date-fns'
+
+const iso = (d) => d.toISOString()
+const now = new Date()
+
+/** Seed data used to make the demo feel alive on first login. */
+export function buildSeed() {
+  return {
+    documents: [
+      {
+        id: 'doc-1',
+        title: 'International Passport',
+        category: 'Passport',
+        description: 'My primary passport. Renewal appointment recommended 6 months before expiry.',
+        importance: 'Critical',
+        beneficiary: 'Amara Okafor',
+        expiryDate: iso(addDays(now, 240)),
+        fileName: 'passport.pdf',
+        createdAt: iso(addDays(now, -40)),
+      },
+      {
+        id: 'doc-2',
+        title: 'Home Insurance Policy',
+        category: 'Insurance',
+        description: 'Comprehensive home cover. Policy #HM-8842. Contact: Guardian Insurance.',
+        importance: 'High',
+        beneficiary: 'Amara Okafor',
+        expiryDate: iso(addDays(now, 95)),
+        fileName: 'home-insurance.pdf',
+        createdAt: iso(addDays(now, -30)),
+      },
+      {
+        id: 'doc-3',
+        title: 'Apartment Title Deed',
+        category: 'Property Documents',
+        description: 'Ownership deed for the Lekki apartment.',
+        importance: 'Critical',
+        beneficiary: 'Family Trust',
+        expiryDate: '',
+        fileName: 'title-deed.pdf',
+        createdAt: iso(addDays(now, -20)),
+      },
+      {
+        id: 'doc-4',
+        title: 'Hardware Wallet Recovery',
+        category: 'Crypto Information',
+        description: 'Location of Ledger device and instructions. Seed phrase stored separately in a sealed capsule.',
+        importance: 'Critical',
+        beneficiary: 'David Okafor',
+        expiryDate: '',
+        fileName: 'crypto-instructions.pdf',
+        createdAt: iso(addDays(now, -12)),
+      },
+    ],
+    memories: [
+      {
+        id: 'mem-1',
+        title: 'Our Wedding Day',
+        type: 'photo',
+        description: 'The day everything began — surrounded by everyone we love.',
+        summary: 'A captured moment: the day everything began, surrounded by everyone we love.',
+        createdAt: iso(addDays(now, -60)),
+      },
+      {
+        id: 'mem-2',
+        title: 'Letter to My Children',
+        type: 'letter',
+        description: 'Everything I want you to know about courage, kindness and chasing your dreams.',
+        summary: 'A heartfelt letter about courage, kindness and chasing your dreams.',
+        createdAt: iso(addDays(now, -15)),
+      },
+      {
+        id: 'mem-3',
+        title: "Grandma's Voice",
+        type: 'voice',
+        description: 'A recording of grandma telling her favourite childhood story.',
+        summary: 'A voice recording of grandma telling her favourite childhood story.',
+        createdAt: iso(addDays(now, -8)),
+      },
+    ],
+    contacts: [
+      {
+        id: 'con-1',
+        name: 'Amara Okafor',
+        relationship: 'Spouse',
+        phone: '+234 802 000 1122',
+        email: 'amara@example.com',
+        permission: 'Administrator',
+        createdAt: iso(addDays(now, -50)),
+      },
+      {
+        id: 'con-2',
+        name: 'David Okafor',
+        relationship: 'Brother',
+        phone: '+234 803 555 7788',
+        email: 'david@example.com',
+        permission: 'Family',
+        createdAt: iso(addDays(now, -22)),
+      },
+      {
+        id: 'con-3',
+        name: 'Chidi & Associates',
+        relationship: 'Estate Lawyer',
+        phone: '+234 809 111 3344',
+        email: 'legal@chidiassociates.com',
+        permission: 'Lawyer',
+        createdAt: iso(addDays(now, -10)),
+      },
+    ],
+    capsules: [
+      {
+        id: 'cap-1',
+        title: "Happy 18th Birthday, Zara",
+        message: 'My darling, if you are reading this you are all grown up. I am so proud of the person you have become...',
+        recipient: 'Zara',
+        unlockType: 'birthday',
+        unlockDate: iso(addYears(now, 3)),
+        items: ['Letter', 'Photos', 'Voice'],
+        createdAt: iso(addDays(now, -5)),
+      },
+      {
+        id: 'cap-2',
+        title: 'For My Wife on Our Anniversary',
+        message: 'Ten years. Every one of them my favourite. Here is why...',
+        recipient: 'Amara',
+        unlockType: 'anniversary',
+        unlockDate: iso(addDays(now, 210)),
+        items: ['Letter', 'Video'],
+        createdAt: iso(addDays(now, -3)),
+      },
+    ],
+    emergency: {
+      bloodGroup: 'O+',
+      conditions: 'Mild asthma',
+      allergies: 'Penicillin',
+      medication: 'Ventolin inhaler (as needed)',
+      doctor: 'Dr. Nneka Eze — +234 806 222 4455',
+      insurance: 'Guardian Health — Policy GH-2231',
+      emergencyContacts: 'Amara Okafor +234 802 000 1122; David Okafor +234 803 555 7788',
+    },
+    activity: [
+      { id: 'act-1', type: 'upload', text: 'Uploaded “International Passport”', at: iso(addDays(now, -40)) },
+      { id: 'act-2', type: 'memory', text: 'Saved memory “Our Wedding Day”', at: iso(addDays(now, -60)) },
+      { id: 'act-3', type: 'capsule', text: 'Created capsule “Happy 18th Birthday, Zara”', at: iso(addDays(now, -5)) },
+      { id: 'act-4', type: 'contact', text: 'Added trusted contact “Amara Okafor”', at: iso(addDays(now, -50)) },
+    ],
+  }
+}
