@@ -106,8 +106,33 @@ When these are set, the app automatically switches from demo mode to real Supaba
 
 ## 🌐 Deployment
 
-- **Frontend → Vercel:** point Vercel at the `client/` directory. `vercel.json` handles the SPA rewrites and Vite build. Add the `VITE_*` env vars.
-- **Backend → Render:** `render.yaml` deploys the `server/` service. Add `GEMINI_API_KEY` in the Render dashboard. Set the frontend's `VITE_API_URL` to the Render URL (e.g. `https://echovault-api.onrender.com/api`).
+### Option A — Everything on Vercel (recommended, one project)
+
+The frontend **and** the Echo AI API deploy together on Vercel. The API lives in `client/api/**` as serverless functions (`/api/health`, `/api/ai/chat`, `/api/ai/categorize`, `/api/ai/summarize`), so no separate backend is needed and `VITE_API_URL` defaults to the same-domain `/api`.
+
+**One-time setup:**
+1. Push this repo to GitHub (already done on this branch).
+2. In Vercel → **Add New… → Project** and import the repo.
+3. Set **Root Directory** to `client`. Vercel auto-detects Vite (`vercel.json` handles the build, SPA rewrites, and functions).
+4. Add environment variables (Project → Settings → Environment Variables):
+   - `GEMINI_API_KEY` *(optional — omit to use the built-in EchoBrain fallback)*
+   - `GEMINI_MODEL` = `gemini-1.5-flash` *(optional)*
+   - `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` *(optional — for cloud auth)*
+5. **Deploy.** That's it. 🎉
+
+**Or via CLI:**
+```bash
+npm i -g vercel
+cd client
+vercel            # first run: link/confirm settings (Root Directory = current)
+vercel --prod     # ship to production
+```
+
+> The app deploys and runs even with **no** environment variables — it falls back to secure local demo mode + EchoBrain AI, so the live URL is instantly demo-ready.
+
+### Option B — Frontend on Vercel + Backend on Render
+
+Prefer a standalone Express server? `render.yaml` deploys the `server/` service to Render. Add `GEMINI_API_KEY` in the Render dashboard, then set the frontend's `VITE_API_URL` to the Render URL (e.g. `https://echovault-api.onrender.com/api`). Both `client/api/**` (Vercel functions) and `server/**` (Express) share the same AI logic, so either works.
 
 ---
 
